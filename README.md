@@ -1,7 +1,15 @@
 # taro
 
 Tool for monitoring and managing jobs and processes. Created for managing cron jobs scheduled on many remote instances
-from [single client application](https://github.com/taro-suite/taroc).
+from single client application.
+
+## Table of contents
+* [Main Features](#main-features)
+* [Instalation](#instalation)
+* [Terminology](#terminology)
+* [Commands](#commands)
+* [Configuration File](#configuration-file)
+* [Premature termination](#premature-termination)
 
 ## Main Features
 
@@ -12,8 +20,9 @@ with `taro` installation.
 
 ### Client Application
 
-CLI client [taroc](https://github.com/taro-suite/taroc) (taro client) communicates with multiple hosts in parallel using
-SSH.
+CLI client called [taroc](https://github.com/taro-suite/taroc) (taro client) communicates, via SSH tunnel, with hosts
+running `taros` server. This model allows monitor and manage jobs deployed on multiple servers from a single
+application.
 
 ### Unified logging
 
@@ -35,6 +44,14 @@ Execution events are listenable both locally and remotely.
 
 Plugin infrastructure is provided for adding custom extensions.
 
+## Instalation
+
+* **Via Pip**
+
+  ```comandline
+  pip install -e git+https://github.com/taro-suite/taro#egg=taro
+  ```
+
 ## Terminology
 
 ### Job
@@ -53,7 +70,7 @@ A concrete execution of a job.
 ### Execute command managed by taro
 
 ```commandline
-taro exec command [args..]
+taro exec {command} [args..]
 ```
 
 ### Job (process) status
@@ -123,7 +140,6 @@ taro hist
 ```
 
 ### Config
-#### Show
 Shows path and content of the config file:
 ```commandline
 taro config show
@@ -135,8 +151,8 @@ Shows path to the config file. This is handy in cases where path to the config i
 vim `taro config path`
 ```
 
-TODO:
 
+### TODO:
 ### Disable
 
 Jobs can be disabled. When disabled job is executed it goes through these states: `None` -> `Created` -> `Disabled`. It
@@ -163,6 +179,31 @@ taro hostinfo
 ```
 
 ## Configuration File
+
+#### taro.yaml: (auto generated if not found)
+
+```commandline
+log:
+  mode: on
+  stdout:
+    level: warn
+  file:
+    level: info
+#    path: ~/.cache/taro/taro.log
+  syslog:
+    level: off # Not yet implemented
+
+persistence:
+  enabled: true
+  type: sqlite
+  max_records: -1
+#  max_age: #ISO 8601 duration format
+#  database: ~/.local/share/taro/taro.db
+
+plugins: []
+
+default_action: --help
+```
 
 ### Lookup
 

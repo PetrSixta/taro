@@ -16,12 +16,13 @@ setuptools.setup(
     url="https://github.com/taro-suite/taro",
     classifiers=[
         "Development Status :: 4 - Beta",
-        "Intended Audience :: Developers, Ops, Admins",
         "Topic :: System :: Monitoring",
         "Topic :: System :: Systems Administration",
         "Programming Language :: Python :: 3.6",
         "License :: OSI Approved :: MIT License",
         "Operating System :: POSIX :: Linux",
+        "Intended Audience :: System Administrators",
+        'Intended Audience :: Developers'
     ],
     python_requires='>=3.6',
     packages=find_packages(exclude=("test*",)) + find_namespace_packages(include=("taro.jobs.db",)),
