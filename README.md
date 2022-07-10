@@ -3,6 +3,10 @@
 Tool for monitoring and managing jobs and processes. Created for managing cron jobs scheduled on many remote instances
 from single client application.
 
+<p align="left">
+  <img width="800" src="https://raw.githubusercontent.com/PetrSixta/taro/test/test2.svg">
+</p>
+
 ## Table of contents
 * [Main Features](#main-features)
 * [Instalation](#instalation)
